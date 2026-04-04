@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+
+    <style>
+
+        /* ===== GLOBAL ===== */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: radial-gradient(circle at top, #1a1a1a, #0f0f0f);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        /* ===== CARD ===== */
+        .container {
+            background: rgba(255, 255, 255, 0.04);
+            padding: 35px;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            width: 370px;
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.12);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        /* ===== TITLE ===== */
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: gold;
+            letter-spacing: 1px;
+        }
+
+        /* ===== INPUTS ===== */
+        input {
+            width: 100%;
+            padding: 13px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border: 1px solid #222;
+            background: #111;
+            color: white;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: gold;
+            box-shadow: 0 0 8px rgba(255,215,0,0.3);
+        }
+
+        /* ===== PLAN TITLE ===== */
+        .plan-title {
+            margin-top: 18px;
+            margin-bottom: 10px;
+            color: gold;
+            font-weight: bold;
+        }
+
+        /* ===== PLAN CARDS ===== */
+        .plans {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .plan {
+            padding: 14px;
+            border-radius: 12px;
+            background: #111;
+            border: 1px solid #333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .plan:hover {
+            border-color: gold;
+            transform: translateY(-2px);
+        }
+
+        /* ===== ACTIVE PLAN ===== */
+        .plan.active {
+            border: 1px solid gold;
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            box-shadow: 0 0 15px rgba(255,215,0,0.4);
+        }
+
+        /* ===== GLOW BADGE ===== */
+        .plan.active::after {
+            content: "Selected";
+            position: absolute;
+            top: -8px;
+            right: 10px;
+            background: gold;
+            color: black;
+            font-size: 10px;
+            padding: 3px 8px;
+            border-radius: 8px;
+            font-weight: bold;
+            box-shadow: 0 0 10px gold;
+        }
+
+        /* ===== PLAN TEXT ===== */
+        .plan h4 {
+            margin: 0;
+            color: gold;
+        }
+
+        .plan p {
+            margin: 5px 0 0;
+            font-size: 13px;
+            color: #aaa;
+        }
+
+        /* ===== SELECTED PLAN BOX ===== */
+        .selected-plan-box {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 10px;
+            border: 1px solid gold;
+            text-align: center;
+            color: gold;
+            font-size: 13px;
+            box-shadow: 0 0 10px rgba(255,215,0,0.3);
+            display: none;
+        }
+
+        /* ===== BUTTON ===== */
+        button {
+            width: 100%;
+            padding: 13px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, gold, #ffd700);
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px gold;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Register</h2>
+
+    <input type="text" id="name" placeholder="Full Name">
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+    <input type="text" id="phone" placeholder="Mobile Number">
+
+    <div class="plan-title">Select Plan</div>
+
+    <div class="plans">
+        <div class="plan" onclick="selectPlan(this, 'basic')">
+            <h4>Basic</h4>
+            <p>₹49/week • ₹2K cover</p>
+        </div>
+
+        <div class="plan" onclick="selectPlan(this, 'premium')">
+            <h4>Premium</h4>
+            <p>₹99/week • ₹7.5K cover</p>
+        </div>
+
+        <div class="plan" onclick="selectPlan(this, 'premium_plus')">
+            <h4>Premium+</h4>
+            <p>₹199/week • ₹20K cover</p>
+        </div>
+    </div>
+
+    <!-- GLOW BOX -->
+    <div class="selected-plan-box" id="selectedPlanBox"></div>
+
+    <button onclick="registerUser()">Register</button>
+
+</div>
+
+<script>
+
+    let selectedPlan = "";
+
+    /* PLAN SELECT */
+    function selectPlan(element, plan) {
+        document.querySelectorAll(".plan").forEach(p => p.classList.remove("active"));
+        element.classList.add("active");
+        selectedPlan = plan;
+
+        const box = document.getElementById("selectedPlanBox");
+        box.style.display = "block";
+        box.innerText = "✨ Selected Plan: " + plan.toUpperCase();
+    }
+
+    /* REGISTER */
+    function registerUser() {
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const phone = document.getElementById("phone").value;
+
+        if (!name || !email || !password || !phone || !selectedPlan) {
+            alert("Fill all fields & select a plan");
+            return;
+        }
+
+        const user = { name, email, password, phone, plan: selectedPlan };
+
+        localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem("loggedIn", "true");
+
+        window.location.href = "index.html";
+    }
+
+</script>
+
+</body>
+</html>

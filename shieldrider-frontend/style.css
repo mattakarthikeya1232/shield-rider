@@ -1,0 +1,85 @@
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(to right, #eef2f3, #ffffff);
+    margin: 0;
+    text-align: center;
+}
+
+.container {
+    margin-top: 60px;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.subtitle {
+    color: gray;
+    margin-bottom: 20px;
+}
+
+.card {
+    background: white;
+    width: 420px;
+    margin: auto;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+button {
+    padding: 12px 30px;
+    background: black;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#pipeline p {
+    margin: 10px;
+    font-size: 16px;
+}
+
+#loading {
+    margin: 15px;
+    color: blue;
+}
+
+#result {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.approved {
+    background: #d4edda;
+    color: #155724;
+}
+
+.reject {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+#notification {
+    margin-top: 20px;
+    padding: 10px;
+    background: #e6ffe6;
+    border-radius: 10px;
+    font-size: 14px;
+}
+input {
+    padding: 10px;
+    width: 80%;
+    margin: 5px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}

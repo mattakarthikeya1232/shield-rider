@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+
+    <style>
+
+        /* ===== GLOBAL ===== */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: radial-gradient(circle at top, #1a1a1a, #0f0f0f);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+        }
+
+        /* ===== CARD ===== */
+        .card {
+            background: rgba(255,255,255,0.04);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            width: 350px;
+            box-shadow: 0 0 30px rgba(255,215,0,0.15);
+            border: 1px solid rgba(255,255,255,0.08);
+            text-align: center;
+        }
+
+        /* ===== TITLE ===== */
+        h2 {
+            color: gold;
+            margin-bottom: 25px;
+            letter-spacing: 1px;
+        }
+
+        /* ===== SUBTEXT ===== */
+        .subtitle {
+            font-size: 14px;
+            color: #aaa;
+            margin-bottom: 20px;
+        }
+
+        /* ===== BUTTON ===== */
+        button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        /* LOGIN BUTTON */
+        .login-btn {
+            background: linear-gradient(135deg, gold, #ffd700);
+            color: black;
+            border: none;
+        }
+
+        .login-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 12px gold;
+        }
+
+        /* REGISTER BUTTON */
+        .register-btn {
+            background: transparent;
+            color: gold;
+            border: 1px solid gold;
+        }
+
+        .register-btn:hover {
+            background: gold;
+            color: black;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <h2>🚀 Welcome to ShieldRider</h2>
+
+    <div class="subtitle">
+        Smart Protection • Instant Claims • Fraud Detection
+    </div>
+
+    <button class="login-btn" onclick="goLogin()">Login</button>
+
+    <button class="register-btn" onclick="goRegister()">Register</button>
+
+</div>
+
+<script>
+    function goLogin(){
+        window.location.href = "login.html";
+    }
+
+    function goRegister(){
+        window.location.href = "register.html";
+    }
+</script>
+
+</body>
+</html>

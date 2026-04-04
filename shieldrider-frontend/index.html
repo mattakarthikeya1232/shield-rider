@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ShieldRider</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+    <style>
+
+        /* ===== GLOBAL ===== */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: radial-gradient(circle at top, #1a1a1a, #0f0f0f);
+            margin: 0;
+            color: white;
+        }
+
+        /* ===== TOPBAR ===== */
+        .topbar {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 30px;
+            background: #111;
+            border-bottom: 1px solid #222;
+        }
+
+        #username {
+            color: gold;
+            font-weight: 500;
+        }
+
+        .topbar a {
+            color: gold;
+            text-decoration: none;
+            border: 1px solid gold;
+            padding: 6px 12px;
+            border-radius: 8px;
+        }
+
+        .topbar a:hover {
+            background: gold;
+            color: black;
+        }
+
+        /* ===== LOCATION ===== */
+        .location-box {
+            background: rgba(255,255,255,0.05);
+            padding: 12px;
+            border-radius: 12px;
+            margin: 20px auto;
+            width: 420px;
+            border: 1px solid #222;
+            box-shadow: 0 0 10px rgba(255,215,0,0.1);
+        }
+
+        /* ===== CARD ===== */
+        .card {
+            background: rgba(255,255,255,0.04);
+            width: 420px;
+            margin: 20px auto;
+            padding: 25px;
+            border-radius: 20px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 0 25px rgba(255,215,0,0.15);
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        /* ===== TITLE ===== */
+        h1 {
+            color: gold;
+        }
+
+        /* ===== BUTTON ===== */
+        button {
+            background: linear-gradient(135deg, gold, #ffd700);
+            color: black;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin: 10px 0;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 12px gold;
+        }
+
+        /* ===== STEPS ===== */
+        .steps p {
+            margin: 6px;
+            color: #ccc;
+        }
+
+        /* ===== BADGES ===== */
+        .badge {
+            padding: 8px 14px;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 10px;
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        /* Approved */
+        .approved {
+            background: rgba(0,255,100,0.15);
+            color: #00ff88;
+            border: 1px solid #00ff88;
+        }
+
+        /* Reject */
+        .reject {
+            background: rgba(255,0,0,0.15);
+            color: #ff4d4d;
+            border: 1px solid #ff4d4d;
+        }
+
+        /* ===== SUBSCRIPTION BADGE ===== */
+        .subscription {
+            margin-top: 10px;
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: 1px solid gold;
+            color: gold;
+            display: inline-block;
+            box-shadow: 0 0 10px rgba(255,215,0,0.3);
+            font-size: 13px;
+        }
+
+        /* ===== NOTIFICATION ===== */
+        #notification {
+            background: #d4edda;
+            color: black;
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        /* ===== TIMER ===== */
+        #timer {
+            font-weight: bold;
+            margin-top: 10px;
+            color: gold;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="topbar">
+    <div id="username">👤 User</div>
+    <div>
+        <a href="#" onclick="logout()">Logout</a>
+    </div>
+</div>
+
+<!-- 📍 Location -->
+<div class="location-box">
+    <p id="userCity">📍 Detecting...</p>
+    <p id="coords"></p>
+</div>
+
+<div class="card">
+
+    <h1>ShieldRider</h1>
+    <p>Automatic Claim Processing System</p>
+
+    <!-- 🔥 Subscription -->
+    <div class="subscription" id="subscriptionType"></div>
+
+    <button onclick="checkFraud()">Check Fraud</button>
+
+    <p id="timer"></p>
+
+    <div class="steps">
+        <p id="step1"></p>
+        <p id="step2"></p>
+        <p id="step3"></p>
+        <p id="step4"></p>
+    </div>
+
+    <div id="loading"></div>
+    <div id="result" style="margin-top:20px;"></div>
+    <div id="notification"></div>
+
+</div>
+
+<script src="script.js"></script>
+
+<button onclick="simulateTransaction()">Simulate Transaction</button>
+
+
+
+<script>
+    /* ONLY UI ADDITION — NO LOGIC CHANGE */
+    const user = JSON.parse(localStorage.getItem("user"));
+    if (user && user.plan) {
+        document.getElementById("subscriptionType").innerText =
+            "✨ " + user.plan.toUpperCase() + " PLAN";
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Profile</title>
+
+    <style>
+
+        /* ===== GLOBAL ===== */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: radial-gradient(circle at top, #1a1a1a, #0f0f0f);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: white;
+        }
+
+        /* ===== CARD ===== */
+        .card {
+            background: rgba(255,255,255,0.04);
+            padding: 35px;
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            width: 360px;
+            box-shadow: 0 0 30px rgba(255,215,0,0.15);
+            border: 1px solid rgba(255,255,255,0.08);
+            text-align: center;
+        }
+
+        /* ===== TITLE ===== */
+        h2 {
+            margin-bottom: 20px;
+            color: gold;
+            letter-spacing: 1px;
+        }
+
+        /* ===== INFO BOX ===== */
+        .info {
+            background: #111;
+            padding: 12px;
+            border-radius: 10px;
+            margin: 10px 0;
+            border: 1px solid #222;
+            text-align: left;
+        }
+
+        /* LABEL */
+        .label {
+            color: gold;
+            font-size: 13px;
+        }
+
+        /* VALUE */
+        .value {
+            font-size: 14px;
+            color: #ccc;
+        }
+
+        /* ===== BUTTON ===== */
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            border: none;
+            border-radius: 10px;
+            background: linear-gradient(135deg, gold, #ffd700);
+            color: black;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 12px gold;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <h2>👤 Rider Profile</h2>
+
+    <div class="info">
+        <div class="label">Name</div>
+        <div class="value" id="name"></div>
+    </div>
+
+    <div class="info">
+        <div class="label">Email</div>
+        <div class="value" id="email"></div>
+    </div>
+
+    <div class="info">
+        <div class="label">City</div>
+        <div class="value" id="city"></div>
+    </div>
+
+    <div class="info">
+        <div class="label">GPS Coordinates</div>
+        <div class="value" id="coords"></div>
+    </div>
+
+    <button onclick="goHome()">⬅ Back to Dashboard</button>
+
+</div>
+
+<script>
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    document.getElementById("name").innerText = user.name;
+    document.getElementById("email").innerText = user.email;
+
+    document.getElementById("city").innerText = user.city || "Detecting...";
+    document.getElementById("coords").innerText = user.coords || "";
+
+    function goHome(){
+        window.location.href = "index.html";
+    }
+</script>
+
+</body>
+</html>
