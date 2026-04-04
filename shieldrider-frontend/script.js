@@ -91,7 +91,49 @@ async function triggerClaim() {
             method: "POST"
         });
 
-        const data = await response.json();
+        async function checkFraud() {
+    const data = {
+        duplicate: 0,
+        policy_active: 1,
+        spoof: 0,
+        claim_count: 2,
+        avg_gap: 5,
+        lat: 13.08,
+        lon: 80.27
+    };
+
+    try {
+        const res = await fetch('https://shield-rider.onrender.com/api/check-fraud', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        });
+
+        // 🔥 HANDLE ERROR
+        if (!res.ok) {
+            throw new Error("Server error");
+        }
+
+        const result = await res.json();
+
+        document.getElementById("result").innerHTML = `
+            <h3>Result:</h3>
+            <p>Prediction: ${result.prediction || "N/A"}</p>
+            <p>Confidence: ${result.confidence || "N/A"}</p>
+            <p>Decision: ${result.decision || "N/A"}</p>
+        `;
+
+    } catch (err) {
+        console.error(err);
+
+        document.getElementById("result").innerHTML = `
+            <h3 style="color:red;">⚠️ Error</h3>
+            <p>Fraud service unavailable</p>
+        `;
+    }
+}
 
         // 🔴 FRAUD CASE
         if (data.prediction === "Fraud" || data.decision === "REVIEW") {
