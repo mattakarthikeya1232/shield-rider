@@ -60,7 +60,7 @@ function delay(ms) {
 
 // 📲 WHATSAPP FUNCTION
 function sendWhatsApp(phone, amount, status) {
-    fetch("http://localhost:3000/send-message", {
+    fetch("https://shield-rider.onrender.com/send-message", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
@@ -87,7 +87,7 @@ async function triggerClaim() {
     };
 
     try {
-        const response = await fetch("http://localhost:3000/claim", {
+        const response = await fetch("https://shield-rider.onrender.com/claim", {
             method: "POST"
         });
 
@@ -163,7 +163,7 @@ async function checkFraud() {
     };
 
     try {
-        const res = await fetch('http://localhost:3000/api/check-fraud', {
+        const res = await fetch('https://shield-rider.onrender.com/api/check-fraud', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
