@@ -2,8 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const twilio = require("twilio");
 
-// DB
-const db = require('./database');
+
 
 // Routes
 const fraudRoutes = require('./routes/fraud');
@@ -94,21 +93,10 @@ app.post("/send-message", async (req, res) => {
 app.post('/register', (req, res) => {
     const { name, email, password, plan } = req.body;
 
-    db.run(
-        `INSERT INTO users (name, email, password, plan) VALUES (?, ?, ?, ?)`,
-        [name, email, password, plan],
-        function(err) {
-            if (err) {
-                console.error("DB Error:", err.message);
-                return res.status(500).send(err.message);
-            }
-
-            res.json({
-                message: "User registered ✅",
-                userId: this.lastID
-            });
-        }
-    );
+    res.json({
+        message: "User registered ✅",
+        user: { name, email, plan }
+    });
 });
 
 
