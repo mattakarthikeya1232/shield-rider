@@ -39,15 +39,10 @@ Gig workers (delivery riders, drivers) face:
 - Approve / Review / Reject in real-time  
 
 👤 **User Profile Dashboard**
-- Displays personal + location data  
+- Displays personal + location data
+-
+- <img width="1470" height="645" alt="Screenshot 2026-04-05 at 5 49 32 PM" src="https://github.com/user-attachments/assets/cb4a43d7-750a-41b0-a48b-4e8a80920d8a" />
 
+🔗 **Live Link **
+   https://shield-rider-liart.vercel.app
 ---
-
-## 🖥️ UI Preview
-
-> ⚠️ Add screenshots here (VERY IMPORTANT)
-
-```md
-![Dashboard](./assets/dashboard.png)
-![Login](./assets/login.png)
-![Fraud Detection](./assets/fraud.png)
