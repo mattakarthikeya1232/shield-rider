@@ -43,6 +43,6 @@ Gig workers (delivery riders, drivers) face:
 -
 - <img width="1470" height="645" alt="Screenshot 2026-04-05 at 5 49 32 PM" src="https://github.com/user-attachments/assets/cb4a43d7-750a-41b0-a48b-4e8a80920d8a" />
 
-🔗 **Live Link **
-   https://shield-rider-liart.vercel.app
+🔗 **Live Link**
+   - https://shield-rider-liart.vercel.app
 ---
