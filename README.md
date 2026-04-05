@@ -3,26 +3,26 @@
 
 ---
 
-## 🧠 Problem Statement
+##  Problem Statement
 
 Gig workers (delivery riders, drivers) face:
 -  Delayed insurance claims  
 -  Fraudulent claim risks  
 -  Lack of real-time decision systems  
 
-👉 **ShieldRider solves this with automation + fraud detection**
+ **ShieldRider solves this with automation + fraud detection**
 
 ---
 
-## ✨ Features
+##  Features
 
-🔥 **User Authentication System**  
+ **User Authentication System**  
 - Login & Register with local storage  
 
-💼 **Insurance Plans**
+ **Insurance Plans**
 - Basic, Premium, Premium+ (interactive selection UI)
 
-📍 **Live Location Tracking**
+ **Live Location Tracking**
 - Detects user city + GPS coordinates  
 
 🧾 **Claim Processing System**
